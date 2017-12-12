@@ -1,17 +1,32 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 import random
 import datetime
 import numpy as np
 
-def generater():
-  lst = np.random.choice(np.arange(1, 6), 100, p = [0.5, 0.25, 0.15, 0.05, 0.05])
-  return lst
+class Q1:
+  def __init__(self):
+    self.lst = []
+    self.freq = {}
+    
+  def generater(self):
+    self.lst = np.random.choice(np.arange(1, 6), 100, p = [0.5, 0.25, 0.15, 0.05, 0.05])
+    return self.lst
+    
+  def frequency(self):
+    for num in self.lst:  
+      if num not in self.freq:
+        self.freq[num] = 0.01
+      else:
+        self.freq[num] += 0.01
+    return self.freq
 
-print generater()
+q1 = Q1()
+print q1.generater()
+print q1.frequency()
 
 
 # In[ ]:
