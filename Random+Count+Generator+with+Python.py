@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[5]:
+# In[6]:
 
 import random
 import datetime
@@ -31,15 +31,16 @@ class Q1:
     return self.freq
 
   def writer(self):
-    while not self.q.empty():
-      t = threading.Thread(target = self.generater, args = (self))
-      t.start()
-      self.output.append(str(self.q.get()) + " --> " + str(datetime.datetime.now()))
+    for _ in range(5):  
+      while not self.q.empty():
+        t = threading.Thread(target = self.generater, args = (self))
+        t.start()
+        self.output.append(str(self.q.get()) + " --> " + str(datetime.datetime.now()))
     return self.output
 
 q1 = Q1()
-q1.generater()
-#print q1.frequency()
+print q1.generater()
+print q1.frequency()
 print q1.writer()
 
 
